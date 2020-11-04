@@ -1,47 +1,93 @@
 <template>
   <div class="small">
-    <line-chart :chart-data="datacollection"></line-chart>
+    <line-chart v-if="linechart" :chart-data="datacollection"  ></line-chart>
+    <bar-chart v-if="barchart" :chart-data="datacollection" />
+
+    
     <button @click="fillData()">Randomize</button>
-    <button>Add dataset</button>
+    <button @click="showChart()">Show barchart</button>
+    <button @click="addDataSet()">Add dataset</button>
+
+    <input type="text" v-model="label">
+    <button @click="addValue()">Add</button>
+
+
   </div>
 </template>
 <script>
 import LineChart from "./LineChart.js";
+import BarChart from "./BarChart.js";
 
 export default {
   components: {
     LineChart,
+    BarChart,
   },
+  props: ['options'],
   data() {
     return {
       datacollection: null,
+      // Charts visible
+      linechart: true,
+      barchart: false,
+      vueCanvas: null,
+      label: null
     };
   },
   mounted() {
-    this.fillData();
+    // this.fillData();
   },
   methods: {
     fillData() {
+      
       this.datacollection = {
-        labels: [this.getRandomInt(), this.getRandomInt()],
+        labels: ['January', 'Februari'],
         datasets: [
           {
-            label: "Data One",
-            backgroundColor: "#f87979",
-            data: [this.getRandomInt(), this.getRandomInt()],
+            label: this.label,
+            backgroundColor: "#ffffff",
+            borderColor: "red",
+            borderWidth: 3,
+            fill: true,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "red",
+            data: [
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+              this.getRandomInt(),
+            ],
           },
           {
-            label: "Data One",
-            backgroundColor:
-              "#1f9696",
+            label: "Data Two",
+            backgroundColor: "#1f9696",
             data: [this.getRandomInt(), this.getRandomInt()],
           },
         ],
       };
+
+      
     },
     getRandomInt() {
       return Math.floor(Math.random() * (50 - 5 + 1)) + 5;
     },
+    showChart() {
+      this.barchart = !this.barchart;
+    },
+    addDataSet() {
+      let dataSet = {
+        label: "Data Three",
+        backgroundColor: "#f871717",
+        data: [this.getRandomInt(), this.getRandomInt()],
+      };
+      this.datacollection.datasets.push(dataSet);
+      console.log(this.datacollection);
+      this.showChart();
+    },
+    addValue() {
+      
+      this.fillData()
+    }
   },
 };
 </script>
@@ -51,7 +97,7 @@ export default {
   max-width: 600px;
   padding: 3em;
   margin: 150px auto;
-  background-color: #031f315e;
+  background-color: #0215205e;
   border-radius: 0.5em;
 }
 </style>

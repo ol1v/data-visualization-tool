@@ -1,24 +1,29 @@
 <template>
   <div id="app">
+    <Sidebar />
+
     <RandomChart />
   </div>
 </template>
 
 <script>
 import RandomChart from "./components/RandomChart";
+import Sidebar from "./components/Sidebar";
 
 export default {
   name: "App",
   components: {
     RandomChart,
+    Sidebar,
   },
 };
 </script>
 
 <style>
-body, html {
+body,
+html {
   background-color: #74ebd5;
-  background-image: linear-gradient(180deg, #1f9696 0%, #101011 100%);
+  background-image: linear-gradient(180deg, #000000 0%, #1f9696 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   width: 100%;
@@ -31,6 +36,5 @@ body, html {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  
 }
 </style>
