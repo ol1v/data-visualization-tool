@@ -1,12 +1,11 @@
 <template>
 <div class="container" :class="{'show': showSidebar}">
     <div class="control">
-        <button @click="showNav"><font-awesome-icon :icon="['fas', 'arrow-circle-right']" /></button>
+        <button @click="showNav"><font-awesome-icon :icon="['fas', 'th']" /></button>
     </div>
     <div class="navigation-icons">
-        <button>Line</button>
-        hej
-        hej
+        <button><font-awesome-icon :icon="['fas', 'plus']" /></button>
+        <button><font-awesome-icon :icon="['fas', 'project-diagram']" /></button>
     </div>
 </div>
     
@@ -22,7 +21,7 @@ export default {
             this.showSidebar = !this.showSidebar
         }
     }
-}
+}   
 </script>
 
 <style scoped>
@@ -53,6 +52,23 @@ export default {
         flex-direction: column;
         width: 50px;
         float: left;
+    }
+
+    button {
+        font-size: 2rem;
+        padding: 10px 0;
+        cursor: pointer;
+        transition: all .5s ease-in-out;
+        background-color: transparent;
+        border-style: none;
+    }
+
+    button:hover {
+        color: #fff;
+    }
+
+    .control {
+        padding-bottom: 2em;
     }
 
     .show {
