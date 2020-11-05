@@ -1,5 +1,6 @@
 <template>
   <div class="small">
+    <h2>Data Description</h2>
     <line-chart v-if="linechart" :chart-data="datacollection"  ></line-chart>
     <bar-chart v-if="barchart" :chart-data="datacollection" />
 
@@ -17,6 +18,7 @@
 <script>
 import LineChart from "./LineChart.js";
 import BarChart from "./BarChart.js";
+import store from "../store"
 
 export default {
   components: {
@@ -36,6 +38,8 @@ export default {
   },
   mounted() {
     // this.fillData();
+    console.log(store.state.backgroundColors)
+    
   },
   methods: {
     fillData() {
@@ -45,9 +49,8 @@ export default {
         datasets: [
           {
             label: this.label,
-            backgroundColor: "#ffffff",
-            borderColor: "red",
-            borderWidth: 3,
+            backgroundColor: store.state.backgroundColors[0],
+            borderWidth: 1,
             fill: true,
             pointHoverRadius: 5,
             pointHoverBackgroundColor: "red",
@@ -60,7 +63,7 @@ export default {
           },
           {
             label: "Data Two",
-            backgroundColor: "#1f9696",
+            backgroundColor: store.state.backgroundColors[1],
             data: [this.getRandomInt(), this.getRandomInt()],
           },
         ],

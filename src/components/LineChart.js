@@ -1,4 +1,5 @@
 import { Line, mixins } from 'vue-chartjs'
+import store from '../store'
 const { reactiveProp } = mixins
 
 export default {
@@ -22,6 +23,11 @@ export default {
      this.gradient2.addColorStop(0, 'rgba(0, 231, 255, 0.9)')
      this.gradient2.addColorStop(0.5, 'rgba(0, 231, 255, 0.25)');
      this.gradient2.addColorStop(1, 'rgba(0, 231, 255, 0)');
+
+     let colorArray = [this.gradient, this.gradient2]
+      
+     store.commit('SET_BACKGROUNDCOLOR', colorArray)
+
 
      this.renderChart({
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],

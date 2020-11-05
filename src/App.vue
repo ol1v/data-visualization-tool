@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Sidebar />
+    <Sidebar/>
+    
 
     <RandomChart />
   </div>
@@ -14,14 +15,13 @@ export default {
   name: "App",
   components: {
     RandomChart,
-    Sidebar,
+    Sidebar
   },
 };
 </script>
 
 <style>
-body,
-html {
+body, html {
   background-color: #74ebd5;
   background-image: linear-gradient(180deg, #000000 0%, #1f9696 100%);
   background-repeat: no-repeat;
@@ -36,5 +36,6 @@ html {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  
 }
 </style>
