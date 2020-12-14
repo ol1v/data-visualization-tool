@@ -15,12 +15,12 @@
       @close="closeModal"
     />
 
-    <!-- <button @click="fillData()">Randomize</button>
+    <button @click="fillData()">Randomize</button>
     <button @click="showChart()">Show barchart</button>
     <button @click="addDataSet()">Add dataset</button>
 
     <input type="text" v-model="label">
-    <button @click="addValue()">Add</button> -->
+    <button @click="addValue()">Add</button>
   </div>
 </template>
 <script>
